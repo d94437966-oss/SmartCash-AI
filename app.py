@@ -179,8 +179,7 @@ col3.metric(
     f"{net_cash_flow:,.2f}"
 )
 
-
-    st.divider()
+st.divider()
     st.subheader("Transaction History")
 
     cursor.execute(
