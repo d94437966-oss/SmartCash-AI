@@ -156,28 +156,19 @@ else:
     totals = dict(cursor.fetchall())
 
     
-st.subheader("Financial Summary")
+    st.subheader("Financial Summary")
 
-revenues = totals.get("Revenue", 0) or 0
-expenses = totals.get("Expense", 0) or 0
-net_cash_flow = revenues - expenses
+    revenues = totals.get("Revenue", 0) or 0
+    expenses = totals.get("Expense", 0) or 0
+    net_cash_flow = revenues - expenses
 
-col1, col2, col3 = st.columns(3)
+    col1, col2, col3 = st.columns(3)
 
-col1.metric(
-    "Total Revenues",
-    f"{revenues:,.2f}"
-)
+    col1.metric("Total Revenues", f"{revenues:,.2f}")
+    col2.metric("Total Expenses", f"{expenses:,.2f}")
+    col3.metric("Net Cash Flow", f"{net_cash_flow:,.2f}")
 
-col2.metric(
-    "Total Expenses",
-    f"{expenses:,.2f}"
-)
-
-col3.metric(
-    "Net Cash Flow",
-    f"{net_cash_flow:,.2f}"
-        st.divider()
+    st.divider()
     st.subheader("Transaction History")
 
     cursor.execute(
